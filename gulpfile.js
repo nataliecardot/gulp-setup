@@ -9,7 +9,7 @@ function style() {
   // 1. Let Gulp know where the files are
   // ** is a glob -- matches any character including a forward slash; usually used to indicate any number of subdirectories
   return gulp.src('src/scss/**/*.scss')
-  // 2. Pass that file through the compiler
+  // 2. Pass that file through the compiler (uses gulp-sass)
     .pipe(sass())
   // 3. Where do I save the compiled CSS?
     .pipe(gulp.dest('css'));
