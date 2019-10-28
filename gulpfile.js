@@ -13,9 +13,25 @@ function style() {
     .pipe(sass())
     // 3. Where do I save the compiled CSS?
     .pipe(gulp.dest('css'))
-    // 4. Stream changes to all browsers (ensures synchronization). Injects changes without refreshing the page, keeping scroll position intact
+    // 4. Stream changes to all browsers (ensures synchronization). Injects changes (update the CSS) without refreshing the page, keeping scroll position intact
     .pipe(browserSync.stream());
 }
 
-// New in v4. Exports command, allowing you to enter `gulp style` in command line to run compilation
+function watch() {
+  browserSync.init({
+    // Set up server
+    server: {
+      // Base directory
+      baseDir: 'src'
+    }
+  });
+  // When anything changes, run style function defined above to recompile
+  gulp.watch('src/scss/**/*.scss', style);
+  // When HTML changes, trigger a page refresh
+  gulp.watch('src/**/*.html').on('change', browserSync.reload);
+  gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
+}
+
+// Exports command, allowing you to enter command to run the function with matching name defined in this file
 exports.style = style;
+exports.watch = watch;
