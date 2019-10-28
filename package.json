@@ -1,7 +1,7 @@
 {
   "name": "gulp-setup",
   "version": "1.0.0",
-  "description": "Starter project with Gulp, Sass, and BrowserSync",
+  "description": "Starter project with Gulp 4, Sass, and BrowserSync",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
