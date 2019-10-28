@@ -10,7 +10,7 @@ function compileSCSS() {
   // ** is a glob -- matches any character including a forward slash; usually used to indicate any number of subdirectories
   return gulp.src('src/scss/**/*.scss')
     // 2. Pass that file through the compiler (uses gulp-sass)
-    .pipe(sass())
+    .pipe(sass().on('error'), sass.logError)
     // 3. Where do I save the compiled CSS?
     // TODO: Also should be minifying the HTML file and moving it into the build folder (currently in src)
     .pipe(gulp.dest('build/css'))
