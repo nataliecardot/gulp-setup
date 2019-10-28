@@ -5,7 +5,7 @@ const browserSync = require('browser-sync').create();
 
 // Compile SCSS into CSS
 // Pre v4, would create tasks (gulp.task()), but with v4 you use functions
-function style() {
+function compileSCSS() {
   // 1. Let Gulp know where the files are
   // ** is a glob -- matches any character including a forward slash; usually used to indicate any number of subdirectories
   return gulp.src('src/scss/**/*.scss')
@@ -27,12 +27,12 @@ function watch() {
     }
   });
   // When anything changes, run style function defined above to recompile
-  gulp.watch('src/scss/**/*.scss', style);
+  gulp.watch('src/scss/**/*.scss', compileSCSS);
   // When HTML changes, trigger a page refresh
   gulp.watch('src/**/*.html').on('change', browserSync.reload);
   gulp.watch('src/js/**/*.js').on('change', browserSync.reload);
 }
 
 // Exports command, allowing you to enter command to run the function with matching name defined in this file
-exports.style = style;
+exports.compileSCSS = compileSCSS;
 exports.watch = watch;
