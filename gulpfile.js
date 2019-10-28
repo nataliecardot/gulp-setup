@@ -12,7 +12,8 @@ function style() {
     // 2. Pass that file through the compiler (uses gulp-sass)
     .pipe(sass())
     // 3. Where do I save the compiled CSS?
-    .pipe(gulp.dest('css'))
+    // TODO: Also should be minifying the HTML file and moving it into the build folder (currently in src)
+    .pipe(gulp.dest('build/css'))
     // 4. Stream changes to all browsers (ensures synchronization). Injects changes (update the CSS) without refreshing the page, keeping scroll position intact
     .pipe(browserSync.stream());
 }
